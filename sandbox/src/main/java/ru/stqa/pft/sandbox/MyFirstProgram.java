@@ -24,6 +24,9 @@ public class MyFirstProgram {
         int s = l*l;
         System.out.println("Площадь квадрата со стороной " + l +  " = " + s);
 
+        String somebody = "world";
+        System.out.println("Hello, " + somebody + " !");
+
     }
     
 }
