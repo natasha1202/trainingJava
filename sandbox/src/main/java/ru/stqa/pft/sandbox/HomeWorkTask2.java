@@ -15,7 +15,7 @@ public class HomeWorkTask2 {
 
         Point2 p3 = new Point2(1, 1);
         Point2 p4 = new Point2(4, 5);
-        double d = Point2.distance(p3, p4);
+        double d = p3.distance(p4);
         System.out.println("Расстояние между точками p3" +
                 "(" + p3.x + ", " + p3.y + ")" + " и p4 " + "(" + p4.x + ", " + p4.y + ")" + " = " +
                 d);

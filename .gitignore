@@ -13,3 +13,19 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 .idea/misc.xml
+sandbox/out/test/classes/ru/stqa/pft/sandbox/PointDistanceTests.class
+sandbox/out/production/classes/ru/stqa/pft/sandbox/Square2.class
+sandbox/out/production/classes/ru/stqa/pft/sandbox/Rectangle.class
+sandbox/out/production/classes/ru/stqa/pft/sandbox/Rectangle2.class
+sandbox/out/production/classes/ru/stqa/pft/sandbox/Rectangle3.class
+sandbox/out/production/classes/ru/stqa/pft/sandbox/Point2.class
+sandbox/out/production/classes/ru/stqa/pft/sandbox/Point.class
+sandbox/out/production/classes/ru/stqa/pft/sandbox/MyFirstProgram3.class
+sandbox/out/production/classes/ru/stqa/pft/sandbox/MyFirstProgram2.class
+sandbox/out/production/classes/ru/stqa/pft/sandbox/MyFirstProgram.class
+sandbox/out/production/classes/ru/stqa/pft/sandbox/HomeWorkTask2.class
+sandbox/out/production/classes/ru/stqa/pft/sandbox/Square.class
+sandbox/out/production/classes/ru/stqa/pft/sandbox/Square3.class
+sandbox/out/test/classes/ru/stqa/pft/sandbox/PointDistanceTests.class
+sandbox/out/test/classes/ru/stqa/pft/sandbox/PointDistanceTests.class
+sandbox/out/test/classes/ru/stqa/pft/sandbox/PointDistanceTests.class
