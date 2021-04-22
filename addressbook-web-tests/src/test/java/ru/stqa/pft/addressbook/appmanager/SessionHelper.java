@@ -10,9 +10,9 @@ public class SessionHelper extends HelperBase {
     }
 
     public void login(String username, String password) {
-        type(By.name(username));
-        type(By.name(password));
-        wd.findElement(By.cssSelector("input:nth-child(7)")).click();
+        type(By.name(username), "admin");
+        type(By.name(password), "sercet");
+        click(By.cssSelector("input:nth-child(7)"));
     }
 
 }

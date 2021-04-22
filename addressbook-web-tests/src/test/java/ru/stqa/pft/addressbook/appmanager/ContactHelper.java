@@ -5,111 +5,76 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-public class ContactHelper {
-    private WebDriver wd;
+public class ContactHelper extends HelperBase {
 
     public ContactHelper(WebDriver wd) {
-        this.wd = wd;
+        super(wd);
     }
 
     public void returntoHomePage() {
-        wd.findElement(By.linkText("home page")).click();
+        click(By.linkText("home page"));
     }
 
     public void submitContactCreation() {
-        wd.findElement(By.name("submit")).click();
+        click(By.name("submit"));
     }
 
     public void fillContactForm(ContactData contactData) {
-        wd.findElement(By.name("firstname")).click();
-        wd.findElement(By.name("firstname")).clear();
-        wd.findElement(By.name("firstname")).sendKeys(contactData.getGivenName());
-        wd.findElement(By.name("middlename")).click();
-        wd.findElement(By.name("middlename")).clear();
-        wd.findElement(By.name("middlename")).sendKeys(contactData.getMiddleName());
-        wd.findElement(By.name("lastname")).click();
-        wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys(contactData.getSurname());
-        wd.findElement(By.name("nickname")).clear();
-        wd.findElement(By.name("nickname")).click();
-        wd.findElement(By.name("nickname")).sendKeys(contactData.getNickname());
-        wd.findElement(By.name("title")).click();
-        wd.findElement(By.name("title")).clear();
-        wd.findElement(By.name("title")).sendKeys(contactData.getTitle());
-        wd.findElement(By.name("company")).click();
-        wd.findElement(By.name("company")).clear();
-        wd.findElement(By.name("company")).sendKeys(contactData.getCompany());
-        wd.findElement(By.name("address")).click();
-        wd.findElement(By.name("address")).clear();
-        wd.findElement(By.name("address")).sendKeys(contactData.getFirstAddress());
-        wd.findElement(By.name("home")).click();
-        wd.findElement(By.name("home")).clear();
-        wd.findElement(By.name("home")).sendKeys(contactData.getPhoneHome());
-        wd.findElement(By.name("mobile")).click();
-        wd.findElement(By.name("mobile")).clear();
-        wd.findElement(By.name("mobile")).sendKeys(contactData.getCell());
-        wd.findElement(By.name("work")).click();
-        wd.findElement(By.name("work")).clear();
-        wd.findElement(By.name("work")).sendKeys(contactData.getPhoneOffice());
-        wd.findElement(By.name("fax")).click();
-        wd.findElement(By.name("fax")).clear();
-        wd.findElement(By.name("fax")).sendKeys(contactData.getFax());
-        wd.findElement(By.name("email")).click();
-        wd.findElement(By.name("email")).clear();
-        wd.findElement(By.name("email")).sendKeys(contactData.getMainEmail());
-        wd.findElement(By.name("email2")).click();
-        wd.findElement(By.name("email2")).clear();
-        wd.findElement(By.name("email2")).sendKeys(contactData.getEmail2());
-        wd.findElement(By.name("email3")).click();
-        wd.findElement(By.name("email3")).clear();
-        wd.findElement(By.name("email3")).sendKeys(contactData.getEmail3());
-        wd.findElement(By.name("homepage")).click();
-        wd.findElement(By.name("homepage")).clear();
-        wd.findElement(By.name("homepage")).sendKeys(contactData.getHomepageURL());
-        wd.findElement(By.name("bday")).click();
+        type(By.name("firstname"), contactData.getGivenName());
+        type(By.name("middlename"), contactData.getMiddleName());
+        type(By.name("lastname"), contactData.getSurname());
+        type(By.name("nickname"), contactData.getNickname());
+        type(By.name("title"), contactData.getTitle());
+        type(By.name("company"), contactData.getCompany());
+        type(By.name("address"), contactData.getFirstAddress());
+        type(By.name("home"), contactData.getPhoneHome());
+        type(By.name("mobile"), contactData.getCell());
+        type(By.name("work"), contactData.getPhoneOffice());
+        type(By.name("fax"), contactData.getFax());
+        type(By.name("email"), contactData.getMainEmail());
+        type(By.name("email2"), contactData.getEmail2());
+        type(By.name("email3"), contactData.getEmail3());
+        type(By.name("homepage"), contactData.getHomepageURL());
+
+        click(By.name("bday"));
         {
             WebElement dropdown = wd.findElement(By.name("bday"));
             dropdown.findElement(By.xpath(contactData.getBirthdayDay())).click();
         }
-        wd.findElement(By.cssSelector("select:nth-child(61) > option:nth-child(11)")).click();
-        wd.findElement(By.name("bmonth")).click();
+        click(By.cssSelector("select:nth-child(61) > option:nth-child(11)"));
+        click(By.name("bmonth"));
         {
             WebElement dropdown = wd.findElement(By.name("bmonth"));
             dropdown.findElement(By.xpath(contactData.getBirthdayMonth())).click();
         }
-        wd.findElement(By.cssSelector("select:nth-child(62) > option:nth-child(11)")).click();
-        wd.findElement(By.name("byear")).click();
-        wd.findElement(By.name("byear")).clear();
-        wd.findElement(By.name("byear")).sendKeys(contactData.getBirthdayYear());
-        wd.findElement(By.name("aday")).click();
+        click(By.cssSelector("select:nth-child(62) > option:nth-child(11)"));
+        type(By.name("byear"), contactData.getBirthdayYear());
+
+        click(By.name("aday"));
         {
             WebElement dropdown = wd.findElement(By.name("aday"));
             dropdown.findElement(By.xpath(contactData.getAnniversaryDay())).click();
         }
-        wd.findElement(By.cssSelector("select:nth-child(66) > option:nth-child(7)")).click();
-        wd.findElement(By.name("amonth")).click();
+        click(By.cssSelector("select:nth-child(66) > option:nth-child(7)"));
+        click(By.name("amonth"));
         {
             WebElement dropdown = wd.findElement(By.name("amonth"));
             dropdown.findElement(By.xpath(contactData.getAnniversaryMonth())).click();
         }
-        wd.findElement(By.cssSelector("select:nth-child(67) > option:nth-child(4)")).click();
-        wd.findElement(By.name("ayear")).click();
-        wd.findElement(By.name("ayear")).clear();
-        wd.findElement(By.name("ayear")).sendKeys(contactData.getAnniversaryYear());
-        wd.findElement(By.name("new_group")).click();
+        click(By.cssSelector("select:nth-child(67) > option:nth-child(4)"));
+        type(By.name("ayear"), contactData.getAnniversaryYear());
+
+
+        click(By.name("new_group"));
         {
             WebElement dropdown = wd.findElement(By.name("new_group"));
             dropdown.findElement(By.xpath(contactData.getGroup())).click();
         }
-        wd.findElement(By.cssSelector("select:nth-child(71) > option:nth-child(3)")).click();
-        wd.findElement(By.name("address2")).click();
-        wd.findElement(By.name("address2")).clear();
-        wd.findElement(By.name("address2")).sendKeys(contactData.getSecondAddress());
-        wd.findElement(By.name("phone2")).click();
-        wd.findElement(By.name("phone2")).clear();
-        wd.findElement(By.name("phone2")).sendKeys(contactData.getPhoneAlternative());
-        wd.findElement(By.name("notes")).click();
-        wd.findElement(By.name("notes")).clear();
-        wd.findElement(By.name("notes")).sendKeys(contactData.getNotes());
+        click(By.cssSelector("select:nth-child(71) > option:nth-child(3)"));
+
+        type(By.name("address2"), contactData.getSecondAddress());
+        type(By.name("phone2"), contactData.getPhoneAlternative());
+        type(By.name("notes"), contactData.getNotes());
+        
     }
 }
