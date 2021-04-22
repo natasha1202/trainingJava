@@ -37,3 +37,5 @@ sandbox/out/test/classes/ru/stqa/pft/sandbox/PointDistanceTests.class
 addressbook-web-tests/out/test/classes/ru/stqa/pft/addressbook/GroupData.class
 addressbook-web-tests/out/test/classes/ru/stqa/pft/addressbook/ContactCreationTests.class
 addressbook-web-tests/out/test/classes/ru/stqa/pft/addressbook/ContactData.class
+addressbook-web-tests/out/test/classes/ru/stqa/pft/addressbook/GroupDeletionTests.class
+addressbook-web-tests/out/test/classes/ru/stqa/pft/addressbook/TestBase.class
