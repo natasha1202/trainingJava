@@ -53,3 +53,5 @@ addressbook-web-tests/out/test/classes/ru/stqa/pft/addressbook/tests/GroupDeleti
 addressbook-web-tests/out/test/classes/ru/stqa/pft/addressbook/tests/TestBase.class
 addressbook-web-tests/out/test/classes/ru/stqa/pft/addressbook/tests/ContactModificationTests.class
 addressbook-web-tests/out/test/classes/ru/stqa/pft/addressbook/tests/ContactDeletionTests.class
+sandbox/out/test/classes/ru/stqa/pft/sandbox/EquationTests.class
+sandbox/out/production/classes/ru/stqa/pft/sandbox/Equation.class
