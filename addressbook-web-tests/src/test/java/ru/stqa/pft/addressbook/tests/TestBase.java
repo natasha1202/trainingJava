@@ -20,7 +20,7 @@ public class TestBase {
     public void tearDown() {
         app.logout();
         app.stop();
-        app.wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        app.wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
 }
