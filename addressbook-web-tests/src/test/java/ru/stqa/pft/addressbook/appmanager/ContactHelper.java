@@ -64,8 +64,8 @@ public class ContactHelper extends HelperBase {
 
     }
 
-    public void selectedContact() {
-        click(By.name("selected[]"));
+    public void selectedContact(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void deleteSelectedContacts() {
@@ -74,6 +74,7 @@ public class ContactHelper extends HelperBase {
 
     public void submitContactDeletion() {
         wd.switchTo().alert().accept();
+        wd.findElement(By.cssSelector("div.msgbox"));
     }
 
     public void selecteEditIcon() {
@@ -93,5 +94,9 @@ public class ContactHelper extends HelperBase {
 
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
+    }
+
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size(); // List
     }
 }
