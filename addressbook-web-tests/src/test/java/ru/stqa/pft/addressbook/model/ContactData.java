@@ -26,6 +26,16 @@ public class ContactData {
     private final String secondAddress;
     private final String phoneAlternative;
     private final String notes;
+    private int id;
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "givenName='" + givenName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", id=" + id +
+                '}';
+    }
 
     public ContactData(String givenName, String middleName, String surname, String nickname, String title, String company, String firstAddress, String phoneHome, String cell, String phoneOffice, String fax, String mainEmail, String email2, String email3, String homepageURL, String birthdayDay, String birthdayMonth, String birthdayYear, String anniversaryDay, String anniversaryMonth, String anniversaryYear, String group, String secondAddress, String phoneAlternative, String notes) {
         this.givenName = givenName;
@@ -154,4 +164,5 @@ public class ContactData {
     public String getNotes() {
         return notes;
     }
+
 }
