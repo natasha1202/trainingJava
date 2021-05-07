@@ -14,14 +14,10 @@ public class GroupData {
     }
 
     public GroupData(String groupName, String groupHeader, String groupFooter) {
-        this.id = 0;
+        this.id = Integer.MAX_VALUE;
         this.groupName = groupName;
         this.groupHeader = groupHeader;
         this.groupFooter = groupFooter;
-    }
-
-    public String getGroupName() {
-        return groupName;
     }
 
     @Override
@@ -31,15 +27,18 @@ public class GroupData {
 
         GroupData groupData = (GroupData) o;
 
-        if (id != groupData.id) return false;
         return groupName != null ? groupName.equals(groupData.groupName) : groupData.groupName == null;
     }
 
     @Override
     public int hashCode() {
-        int result = groupName != null ? groupName.hashCode() : 0;
-        result = 31 * result + id;
-        return result;
+        return groupName != null ? groupName.hashCode() : 0;
+    }
+
+
+
+    public String getGroupName() {
+        return groupName;
     }
 
     @Override
