@@ -199,4 +199,23 @@ public class ContactData {
         return notes;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ContactData that = (ContactData) o;
+
+        if (id != that.id) return false;
+        if (givenName != null ? !givenName.equals(that.givenName) : that.givenName != null) return false;
+        return surname != null ? surname.equals(that.surname) : that.surname == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = givenName != null ? givenName.hashCode() : 0;
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + id;
+        return result;
+    }
 }
