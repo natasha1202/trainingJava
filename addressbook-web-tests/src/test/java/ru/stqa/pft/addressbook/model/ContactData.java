@@ -37,6 +37,10 @@ public class ContactData {
                 '}';
     }
 
+    public int getId() {
+        return id;
+    }
+
     public ContactData(String givenName, String middleName, String surname, String nickname, String title, String company, String firstAddress, String phoneHome, String cell, String phoneOffice, String fax, String mainEmail, String email2, String email3, String homepageURL, String birthdayDay, String birthdayMonth, String birthdayYear, String anniversaryDay, String anniversaryMonth, String anniversaryYear, String group, String secondAddress, String phoneAlternative, String notes) {
         this.givenName = givenName;
         this.middleName = middleName;
@@ -63,6 +67,36 @@ public class ContactData {
         this.secondAddress = secondAddress;
         this.phoneAlternative = phoneAlternative;
         this.notes = notes;
+        this.id = 0;
+    }
+
+    public ContactData(int id, String givenName, String middleName, String surname, String nickname, String title, String company, String firstAddress, String phoneHome, String cell, String phoneOffice, String fax, String mainEmail, String email2, String email3, String homepageURL, String birthdayDay, String birthdayMonth, String birthdayYear, String anniversaryDay, String anniversaryMonth, String anniversaryYear, String group, String secondAddress, String phoneAlternative, String notes) {
+        this.givenName = givenName;
+        this.middleName = middleName;
+        this.surname = surname;
+        this.nickname = nickname;
+        this.title = title;
+        this.company = company;
+        this.firstAddress = firstAddress;
+        this.phoneHome = phoneHome;
+        this.cell = cell;
+        this.phoneOffice = phoneOffice;
+        this.fax = fax;
+        this.mainEmail = mainEmail;
+        this.email2 = email2;
+        this.email3 = email3;
+        this.homepageURL = homepageURL;
+        this.birthdayDay = birthdayDay;
+        this.birthdayMonth = birthdayMonth;
+        this.birthdayYear = birthdayYear;
+        this.anniversaryDay = anniversaryDay;
+        this.anniversaryMonth = anniversaryMonth;
+        this.anniversaryYear = anniversaryYear;
+        this.group = group;
+        this.secondAddress = secondAddress;
+        this.phoneAlternative = phoneAlternative;
+        this.notes = notes;
+        this.id = id;
     }
 
     public String getGivenName() {
