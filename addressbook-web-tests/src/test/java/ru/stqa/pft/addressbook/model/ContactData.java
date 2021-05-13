@@ -41,6 +41,24 @@ public class ContactData {
         return id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ContactData that = (ContactData) o;
+
+        if (givenName != null ? !givenName.equals(that.givenName) : that.givenName != null) return false;
+        return surname != null ? surname.equals(that.surname) : that.surname == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = givenName != null ? givenName.hashCode() : 0;
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        return result;
+    }
+
     public ContactData(String givenName, String middleName, String surname, String nickname, String title, String company, String firstAddress, String phoneHome, String cell, String phoneOffice, String fax, String mainEmail, String email2, String email3, String homepageURL, String birthdayDay, String birthdayMonth, String birthdayYear, String anniversaryDay, String anniversaryMonth, String anniversaryYear, String group, String secondAddress, String phoneAlternative, String notes) {
         this.givenName = givenName;
         this.middleName = middleName;
@@ -67,7 +85,7 @@ public class ContactData {
         this.secondAddress = secondAddress;
         this.phoneAlternative = phoneAlternative;
         this.notes = notes;
-        this.id = 0;
+        this.id = Integer.MAX_VALUE;
     }
 
     public ContactData(int id, String givenName, String middleName, String surname, String nickname, String title, String company, String firstAddress, String phoneHome, String cell, String phoneOffice, String fax, String mainEmail, String email2, String email3, String homepageURL, String birthdayDay, String birthdayMonth, String birthdayYear, String anniversaryDay, String anniversaryMonth, String anniversaryYear, String group, String secondAddress, String phoneAlternative, String notes) {
@@ -199,23 +217,4 @@ public class ContactData {
         return notes;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ContactData that = (ContactData) o;
-
-        if (id != that.id) return false;
-        if (givenName != null ? !givenName.equals(that.givenName) : that.givenName != null) return false;
-        return surname != null ? surname.equals(that.surname) : that.surname == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = givenName != null ? givenName.hashCode() : 0;
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + id;
-        return result;
-    }
 }
