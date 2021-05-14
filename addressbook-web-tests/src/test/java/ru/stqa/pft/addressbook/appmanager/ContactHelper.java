@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
-    public List<ContactData> getContactList (){
+    public List<ContactData> contactList(){
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements){
@@ -94,8 +94,9 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.cssSelector("div.msgbox"));
     }
 
-    public void selecteEditIcon() {
-        click(By.xpath("(//img[@alt='Edit'])[1]"));
+    public void selecteEditIcon(int index) {
+       // click(By.xpath("(//img[@alt='Edit'])[1]"));
+        wd.findElements(By.xpath("(//img[@alt='Edit'])[]")).get(index).click();
     }
 
     public void submitContactUpdate() {
@@ -103,9 +104,23 @@ public class ContactHelper extends HelperBase {
     }
 
     public void createContact(ContactData contact) {
-        new NavigationHelper(wd).gotoCreateContactPage();
+        new NavigationHelper(wd).createContactPage();
         fillContactForm(contact, true);
         submitContactCreation();
+        returntoHomePage();
+    }
+
+    public void modifyContact(int index, ContactData contact) {
+        selecteEditIcon(index);
+        fillContactForm(contact, false);
+        submitContactUpdate();
+        returntoHomePage();
+    }
+
+    public void deleteContact(int index) {
+        selectedContact(index);
+        deleteSelectedContacts();
+        submitContactDeletion();
         returntoHomePage();
     }
 

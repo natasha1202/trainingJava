@@ -68,6 +68,12 @@ public class GroupHelper extends HelperBase {
         returntoGroupPage();
     }
 
+    public void deleteGroup(int index) {
+        selectGroup(index);
+        deleteSelectedGroups();
+        returntoGroupPage();
+    }
+
     public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
     }
@@ -76,7 +82,7 @@ public class GroupHelper extends HelperBase {
         return wd.findElements(By.name("selected[]")).size(); // List
     }
 
-    public List<GroupData> getGroupList() {
+    public List<GroupData> groupList() {
         List<GroupData> groups = new ArrayList<GroupData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements){
