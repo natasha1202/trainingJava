@@ -17,10 +17,14 @@ public class ContactHelper extends HelperBase {
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements){
             List<WebElement> cells = element.findElements(By.tagName("td"));
-            String givenName = element.getText();
-            int id = Integer.parseInt(element.findElement(By.xpath("//td/input")).getAttribute("id"));
-            ContactData contact = new ContactData(id, givenName, null, null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null  );
-            contacts.add(contact);
+            for(WebElement cell : cells) {
+                String givenName = elements.get(1).getText();
+                String surname = elements.get(2).getText();
+                int id = Integer.parseInt(cell.findElement(By.xpath("//td/input")).getAttribute("id"));
+                ContactData contact = new ContactData(id, givenName, null, surname, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+                contacts.add(contact);
+            }
+
         }
         return contacts;
     };
@@ -96,7 +100,7 @@ public class ContactHelper extends HelperBase {
 
     public void selecteEditIcon(int index) {
        // click(By.xpath("(//img[@alt='Edit'])[1]"));
-        wd.findElements(By.xpath("(//img[@alt='Edit'])[]")).get(index).click();
+        wd.findElements(By.xpath("(//img[@alt='Edit'])[1]")).get(index).click();
     }
 
     public void submitContactUpdate() {
