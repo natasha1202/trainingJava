@@ -13,6 +13,16 @@ public class GroupData {
         this.groupFooter = groupFooter;
     } */
 
+   /* @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        GroupData groupData = (GroupData) o;
+
+        return groupName != null ? groupName.equals(groupData.groupName) : groupData.groupName == null;
+    } */
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -20,6 +30,7 @@ public class GroupData {
 
         GroupData groupData = (GroupData) o;
 
+        if (id != groupData.id) return false;
         return groupName != null ? groupName.equals(groupData.groupName) : groupData.groupName == null;
     }
 
