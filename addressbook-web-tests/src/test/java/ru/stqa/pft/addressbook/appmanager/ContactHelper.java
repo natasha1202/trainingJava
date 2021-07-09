@@ -23,7 +23,10 @@ public class ContactHelper extends HelperBase {
             String givenName = cells.get(2).getText();
             String surname = cells.get(1).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            ContactData contact = new ContactData(id, givenName, null, surname, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+            ContactData contact = new ContactData()
+                    .withId(id)
+                    .withGivenName(givenName)
+                    .withSurname(surname);
             contacts.add(contact);
         }
         return contacts;
@@ -107,21 +110,21 @@ public class ContactHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public void createContact(ContactData contact) {
+    public void create(ContactData contact) {
         new NavigationHelper(wd).createContactPage();
         fillContactForm(contact, true);
         submitContactCreation();
         returntoHomePage();
     }
 
-    public void modifyContact(int index, ContactData contact) {
+    public void modify(int index, ContactData contact) {
         selecteEditIcon(index);
         fillContactForm(contact, false);
         submitContactUpdate();
         returntoHomePage();
     }
 
-    public void deleteContact(int index) {
+    public void delete(int index) {
         selectedContact(index);
         deleteSelectedContacts();
         submitContactDeletion();

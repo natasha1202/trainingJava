@@ -13,7 +13,7 @@ public class GroupDeletionTests extends TestBase {
         app.goTo().groupPage();
         if ( app.group().groupList().size() == 0){
            // app.group().createGroup(new GroupData("test01", "test", "text"));
-            app.group().createGroup(new GroupData().withGroupName("removeGroup"));
+            app.group().create(new GroupData().withGroupName("removeGroup"));
         }
     }
 
@@ -23,7 +23,7 @@ public class GroupDeletionTests extends TestBase {
         int index = before.size() - 1;
         // int before = app.getGroupHelper().getGroupCount();
         //app.getGroupHelper().selectGroup(before -1);
-        app.group().deleteGroup(index);
+        app.group().delete(index);
         List<GroupData> after = app.group().groupList();
         //int after = app.getGroupHelper().getGroupCount();
         //Assert.assertEquals(after, before - 1);

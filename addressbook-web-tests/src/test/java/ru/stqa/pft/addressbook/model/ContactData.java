@@ -1,32 +1,163 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-    private final String givenName;
-    private final String middleName;
-    private final String surname;
-    private final String nickname;
-    private final String title;
-    private final String company;
-    private final String firstAddress;
-    private final String phoneHome;
-    private final String cell;
-    private final String phoneOffice;
-    private final String fax;
-    private final String mainEmail;
-    private final String email2;
-    private final String email3;
-    private final String homepageURL;
-    private final String birthdayDay;
-    private final String birthdayMonth;
-    private final String birthdayYear;
-    private final String anniversaryDay;
-    private final String anniversaryMonth;
-    private final String anniversaryYear;
-    private final String group;
-    private final String secondAddress;
-    private final String phoneAlternative;
-    private final String notes;
-    private int id;
+    private String givenName;
+    private String middleName;
+    private String surname;
+    private String nickname;
+    private String title;
+    private String company;
+    private String firstAddress;
+    private String phoneHome;
+    private String cell;
+    private String phoneOffice;
+    private String fax;
+    private String mainEmail;
+    private String email2;
+    private String email3;
+    private String homepageURL;
+    private String birthdayDay;
+    private String birthdayMonth;
+    private String birthdayYear;
+    private String anniversaryDay;
+    private String anniversaryMonth;
+    private String anniversaryYear;
+    private String group;
+    private String secondAddress;
+    private String phoneAlternative;
+    private String notes;
+    private int id = Integer.MAX_VALUE;
+
+    public ContactData withGivenName(String givenName) {
+        this.givenName = givenName;
+        return this;
+    }
+
+    public ContactData withMiddleName(String middleName) {
+        this.middleName = middleName;
+        return this;
+    }
+
+    public ContactData withSurname(String surname) {
+        this.surname = surname;
+        return this;
+    }
+
+    public ContactData withNickname(String nickname) {
+        this.nickname = nickname;
+        return this;
+    }
+
+    public ContactData withTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public ContactData withCompany(String company) {
+        this.company = company;
+        return this;
+    }
+
+    public ContactData withFirstAddress(String firstAddress) {
+        this.firstAddress = firstAddress;
+        return this;
+    }
+
+    public ContactData withPhoneHome(String phoneHome) {
+        this.phoneHome = phoneHome;
+        return this;
+    }
+
+    public ContactData withCell(String cell) {
+        this.cell = cell;
+        return this;
+    }
+
+    public ContactData withPhoneOffice(String phoneOffice) {
+        this.phoneOffice = phoneOffice;
+        return this;
+    }
+
+    public ContactData withFax(String fax) {
+        this.fax = fax;
+        return this;
+    }
+
+    public ContactData withMainEmail(String mainEmail) {
+        this.mainEmail = mainEmail;
+        return this;
+    }
+
+    public ContactData withEmail2(String email2) {
+        this.email2 = email2;
+        return this;
+    }
+
+    public ContactData withEmail3(String email3) {
+        this.email3 = email3;
+        return this;
+    }
+
+    public ContactData withHomepageURL(String homepageURL) {
+        this.homepageURL = homepageURL;
+        return this;
+    }
+
+    public ContactData withBirthdayDay(String birthdayDay) {
+        this.birthdayDay = birthdayDay;
+        return this;
+    }
+
+    public ContactData withBirthdayMonth(String birthdayMonth) {
+        this.birthdayMonth = birthdayMonth;
+        return this;
+    }
+
+    public ContactData withBirthdayYear(String birthdayYear) {
+        this.birthdayYear = birthdayYear;
+        return this;
+    }
+
+    public ContactData withAnniversaryDay(String anniversaryDay) {
+        this.anniversaryDay = anniversaryDay;
+        return this;
+    }
+
+    public ContactData withAnniversaryMonth(String anniversaryMonth) {
+        this.anniversaryMonth = anniversaryMonth;
+        return this;
+    }
+
+    public ContactData withAnniversaryYear(String anniversaryYear) {
+        this.anniversaryYear = anniversaryYear;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
+    public ContactData withSecondAddress(String secondAddress) {
+        this.secondAddress = secondAddress;
+        return this;
+    }
+
+    public ContactData withPhoneAlternative(String phoneAlternative) {
+        this.phoneAlternative = phoneAlternative;
+        return this;
+    }
+
+    public ContactData withNotes(String notes) {
+        this.notes = notes;
+        return this;
+    }
+
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;
+    }
+
 
     @Override
     public String toString() {
@@ -59,7 +190,7 @@ public class ContactData {
         return result;
     }
 
-    public ContactData(String givenName, String middleName, String surname, String nickname, String title, String company, String firstAddress, String phoneHome, String cell, String phoneOffice, String fax, String mainEmail, String email2, String email3, String homepageURL, String birthdayDay, String birthdayMonth, String birthdayYear, String anniversaryDay, String anniversaryMonth, String anniversaryYear, String group, String secondAddress, String phoneAlternative, String notes) {
+  /*  public ContactData(String givenName, String middleName, String surname, String nickname, String title, String company, String firstAddress, String phoneHome, String cell, String phoneOffice, String fax, String mainEmail, String email2, String email3, String homepageURL, String birthdayDay, String birthdayMonth, String birthdayYear, String anniversaryDay, String anniversaryMonth, String anniversaryYear, String group, String secondAddress, String phoneAlternative, String notes) {
         this.givenName = givenName;
         this.middleName = middleName;
         this.surname = surname;
@@ -115,7 +246,7 @@ public class ContactData {
         this.phoneAlternative = phoneAlternative;
         this.notes = notes;
         this.id = id;
-    }
+    } */
 
     public String getGivenName() {
         return givenName;
