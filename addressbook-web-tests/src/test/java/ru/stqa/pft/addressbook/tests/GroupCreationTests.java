@@ -10,6 +10,8 @@ import java.util.Set;
 
 public class GroupCreationTests extends TestBase {
 
+
+
     @Test
     public void testGroupCreation() {
         app.goTo().groupPage();

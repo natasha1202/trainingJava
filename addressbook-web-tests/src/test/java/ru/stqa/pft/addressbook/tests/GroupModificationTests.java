@@ -7,6 +7,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class GroupModificationTests extends TestBase {
 
@@ -22,27 +23,33 @@ public class GroupModificationTests extends TestBase {
 
     @Test
     public void testGroupModification(){
-        List<GroupData> before = app.group().groupList();
-        int index = before.size() - 1;
+        //List<GroupData> before = app.group().groupList();
+        Set<GroupData> before = app.group().all();
+        GroupData modifiedGroup = before.iterator().next();
+        //int index = before.size() - 1;
         //GroupData group = new GroupData(before.get(index).getId(), "test01", "test02", "test03");
         GroupData group = new GroupData()
-                .withId(before.get(index).getId())
+               // .withId(before.get(index).getId())
+                .withId(modifiedGroup.getId())
                 .withGroupName("test21")
                 .withGroupHeader("header")
                 .withGroupFooter("footer");
         //int before = app.getGroupHelper().getGroupCount();
         // app.getGroupHelper().selectGroup(before-1);
-        app.group().modify(group, index);
-        List<GroupData> after = app.group().groupList();
+        //app.group().modify(group, index);
+        app.group().modify(group);
+        //List<GroupData> after = app.group().groupList();
+        Set<GroupData> after = app.group().all();
         //int after = app.getGroupHelper().getGroupCount();
         // Assert.assertEquals(after, before);
         Assert.assertEquals(after.size(), before.size());
 
-        before.remove(index);
+        //before.remove(index);
+        before.remove(modifiedGroup);
         before.add(group);
-        Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+       /* Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
         before.sort(byId);
-        after.sort(byId);
+        after.sort(byId); */
         // Assert.assertEquals(new HashSet<Object>(before) ,new HashSet<Object>(after));
         Assert.assertEquals(before, after);
     }
