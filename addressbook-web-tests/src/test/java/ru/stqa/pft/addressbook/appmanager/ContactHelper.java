@@ -9,7 +9,6 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -35,25 +34,6 @@ public class ContactHelper extends HelperBase {
         return contacts;
     };
 
-   /* public Set<ContactData> all(){
-        Set<ContactData> contacts = new HashSet<ContactData>();
-        List<WebElement> elements = wd.findElements(By.name("entry"));
-        for (WebElement element : elements){
-            List<WebElement> cells = element.findElements(By.tagName("td"));
-            for(WebElement cell : cells) {
-                String cellText = cell.getText();
-            }
-            String givenName = cells.get(2).getText();
-            String surname = cells.get(1).getText();
-            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            ContactData contact = new ContactData()
-                    .withId(id)
-                    .withGivenName(givenName)
-                    .withSurname(surname);
-            contacts.add(contact);
-        }
-        return contacts;
-    };*/
 
     public Set<ContactData> all(){
         Contacts contacts = new Contacts();
@@ -149,6 +129,10 @@ public class ContactHelper extends HelperBase {
         wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
     }
 
+    private void selectedContactById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    }
+
     public void submitContactUpdate() {
         click(By.name("update"));
     }
@@ -173,6 +157,14 @@ public class ContactHelper extends HelperBase {
         submitContactDeletion();
         returntoHomePage();
     }
+
+    public void delete(ContactData contact) {
+        selectedContactById(contact.getId());
+        deleteSelectedContacts();
+        submitContactDeletion();
+        returntoHomePage();
+    }
+
 
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
