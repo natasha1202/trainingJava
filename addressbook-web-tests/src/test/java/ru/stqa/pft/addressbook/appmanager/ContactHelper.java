@@ -8,32 +8,10 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class ContactHelper extends HelperBase {
-
-    public List<ContactData> contactList(){
-        List<ContactData> contacts = new ArrayList<ContactData>();
-        List<WebElement> elements = wd.findElements(By.name("entry"));
-        for (WebElement element : elements){
-            List<WebElement> cells = element.findElements(By.tagName("td"));
-            for(WebElement cell : cells) {
-                String cellText = cell.getText();
-            }
-            String givenName = cells.get(2).getText();
-            String surname = cells.get(1).getText();
-            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            ContactData contact = new ContactData()
-                    .withId(id)
-                    .withGivenName(givenName)
-                    .withSurname(surname);
-            contacts.add(contact);
-        }
-        return contacts;
-    };
-
 
     public Set<ContactData> all(){
         Contacts contacts = new Contacts();
@@ -133,6 +111,10 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
+    public void selecteEditIconById(int id) {
+        wd.findElements(By.xpath("//img[@alt='Edit']")).get(id).click();
+    }
+
     public void submitContactUpdate() {
         click(By.name("update"));
     }
@@ -144,17 +126,10 @@ public class ContactHelper extends HelperBase {
         returntoHomePage();
     }
 
-    public void modify(int index, ContactData contact) {
-        selecteEditIcon(index);
+    public void modify(ContactData contact) {
+        selecteEditIconById(contact.getId());
         fillContactForm(contact, false);
         submitContactUpdate();
-        returntoHomePage();
-    }
-
-    public void delete(int index) {
-        selectedContact(index);
-        deleteSelectedContacts();
-        submitContactDeletion();
         returntoHomePage();
     }
 
@@ -173,5 +148,6 @@ public class ContactHelper extends HelperBase {
     public int getContactCount() {
         return wd.findElements(By.name("selected[]")).size(); // List
     }
+
 
 }
