@@ -112,7 +112,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void selecteEditIconById(int id) {
-        wd.findElements(By.xpath("//img[@alt='Edit']")).get(id).click();
+        wd.findElement(By.xpath("//a[@href='edit.php?id=" + id + "' ]")).click();
     }
 
     public void submitContactUpdate() {
