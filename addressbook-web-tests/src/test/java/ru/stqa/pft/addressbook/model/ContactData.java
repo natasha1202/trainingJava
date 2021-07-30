@@ -172,7 +172,7 @@ public class ContactData {
         return id;
     }
 
-    @Override
+   /* @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -188,65 +188,27 @@ public class ContactData {
         int result = givenName != null ? givenName.hashCode() : 0;
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         return result;
-    }
-
-  /*  public ContactData(String givenName, String middleName, String surname, String nickname, String title, String company, String firstAddress, String phoneHome, String cell, String phoneOffice, String fax, String mainEmail, String email2, String email3, String homepageURL, String birthdayDay, String birthdayMonth, String birthdayYear, String anniversaryDay, String anniversaryMonth, String anniversaryYear, String group, String secondAddress, String phoneAlternative, String notes) {
-        this.givenName = givenName;
-        this.middleName = middleName;
-        this.surname = surname;
-        this.nickname = nickname;
-        this.title = title;
-        this.company = company;
-        this.firstAddress = firstAddress;
-        this.phoneHome = phoneHome;
-        this.cell = cell;
-        this.phoneOffice = phoneOffice;
-        this.fax = fax;
-        this.mainEmail = mainEmail;
-        this.email2 = email2;
-        this.email3 = email3;
-        this.homepageURL = homepageURL;
-        this.birthdayDay = birthdayDay;
-        this.birthdayMonth = birthdayMonth;
-        this.birthdayYear = birthdayYear;
-        this.anniversaryDay = anniversaryDay;
-        this.anniversaryMonth = anniversaryMonth;
-        this.anniversaryYear = anniversaryYear;
-        this.group = group;
-        this.secondAddress = secondAddress;
-        this.phoneAlternative = phoneAlternative;
-        this.notes = notes;
-        this.id = Integer.MAX_VALUE;
-    }
-
-    public ContactData(int id, String givenName, String middleName, String surname, String nickname, String title, String company, String firstAddress, String phoneHome, String cell, String phoneOffice, String fax, String mainEmail, String email2, String email3, String homepageURL, String birthdayDay, String birthdayMonth, String birthdayYear, String anniversaryDay, String anniversaryMonth, String anniversaryYear, String group, String secondAddress, String phoneAlternative, String notes) {
-        this.givenName = givenName;
-        this.middleName = middleName;
-        this.surname = surname;
-        this.nickname = nickname;
-        this.title = title;
-        this.company = company;
-        this.firstAddress = firstAddress;
-        this.phoneHome = phoneHome;
-        this.cell = cell;
-        this.phoneOffice = phoneOffice;
-        this.fax = fax;
-        this.mainEmail = mainEmail;
-        this.email2 = email2;
-        this.email3 = email3;
-        this.homepageURL = homepageURL;
-        this.birthdayDay = birthdayDay;
-        this.birthdayMonth = birthdayMonth;
-        this.birthdayYear = birthdayYear;
-        this.anniversaryDay = anniversaryDay;
-        this.anniversaryMonth = anniversaryMonth;
-        this.anniversaryYear = anniversaryYear;
-        this.group = group;
-        this.secondAddress = secondAddress;
-        this.phoneAlternative = phoneAlternative;
-        this.notes = notes;
-        this.id = id;
     } */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ContactData that = (ContactData) o;
+
+        if (id != that.id) return false;
+        if (givenName != null ? !givenName.equals(that.givenName) : that.givenName != null) return false;
+        return surname != null ? surname.equals(that.surname) : that.surname == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = givenName != null ? givenName.hashCode() : 0;
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + id;
+        return result;
+    }
 
     public String getGivenName() {
         return givenName;
