@@ -46,7 +46,11 @@ public class ContactHelper extends HelperBase {
         if (isElementPresent(By.id("maintable"))){
             return;
         }
+        if (isElementPresent(By.linkText("home page"))){
         click(By.linkText("home page"));
+        } else {click(By.linkText("home"));}
+
+
     }
 
     public void submitContactCreation() {
@@ -107,7 +111,7 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.cssSelector("div.msgbox"));
     }
 
-    public void selecteEditIcon(int index) {
+    public void selectedEditIcon(int index) {
         // click(By.xpath("(//img[@alt='Edit'])[1]"));
         wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
     }
@@ -116,7 +120,7 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
-    public void selecteEditIconById(int id) {
+    public void selectedEditIconById(int id) {
         wd.findElement(By.xpath("//a[@href='edit.php?id=" + id + "' ]")).click();
     }
 
@@ -133,7 +137,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void modify(ContactData contact) {
-        selecteEditIconById(contact.getId());
+        selectedEditIconById(contact.getId());
         fillContactForm(contact, false);
         submitContactUpdate();
         contactCache = null;
@@ -153,7 +157,7 @@ public class ContactHelper extends HelperBase {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public int getContactCount() {
+    public int contactCount() {
         return wd.findElements(By.name("selected[]")).size(); // List
     }
 

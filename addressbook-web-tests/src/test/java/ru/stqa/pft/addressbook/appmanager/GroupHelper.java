@@ -7,7 +7,6 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,13 +16,15 @@ public class GroupHelper extends HelperBase {
         super(wd);
     }
 
-    public void returntoGroupPage() {
+    public void returnToGroupPage() {
         if (isElementPresent(By.tagName("h1"))
                 && wd.findElement(By.tagName("h1")).getText().equals("Groups")
                 && isElementPresent(By.name("new"))){
             return;
         }
-        click(By.linkText("group page"));
+        if (isElementPresent(By.linkText("group page"))){
+            click(By.linkText("group page"));
+        }else {click(By.linkText("groups"));}
     }
 
     public void submitGroupCreation() {
@@ -65,7 +66,7 @@ public class GroupHelper extends HelperBase {
         fillGroupForm(group);
         submitGroupCreation();
         groupCache = null;
-        returntoGroupPage();
+        returnToGroupPage();
     }
 
     public void modify(GroupData group, int index) {
@@ -73,7 +74,7 @@ public class GroupHelper extends HelperBase {
         initGroupModification();
         fillGroupForm(group);
         submitGroupModification();
-        returntoGroupPage();
+        returnToGroupPage();
     }
 
     public void modify(GroupData group) {
@@ -82,27 +83,27 @@ public class GroupHelper extends HelperBase {
         fillGroupForm(group);
         submitGroupModification();
         groupCache = null;
-        returntoGroupPage();
+        returnToGroupPage();
     }
 
     public void delete(int index) {
         selectGroup(index);
         deleteSelectedGroups();
-        returntoGroupPage();
+        returnToGroupPage();
     }
 
     public void delete(GroupData group) {
         selectGroupById(group.getId());
         deleteSelectedGroups();
         groupCache = null;
-        returntoGroupPage();
+        returnToGroupPage();
     }
 
     public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public int getGroupCount() {
+    public int groupCount() {
         return wd.findElements(By.name("selected[]")).size(); // List
     }
 

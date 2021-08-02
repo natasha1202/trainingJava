@@ -58,8 +58,8 @@ public class ContactModificationTests extends TestBase {
                 .withPhoneAlternative("home2")
                 .withNotes("my comment");
         app.contact().modify(contact);
+        assertThat(app.contact().contactCount(), equalTo(before.size()));
         Contacts after = (Contacts) app.contact().all();
-        assertEquals(after.size(), before.size());
         assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
     }
 
