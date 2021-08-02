@@ -13,8 +13,13 @@ import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
+    private Contacts contactCache = null;
+
     public Set<ContactData> all(){
-        Contacts contacts = new Contacts();
+        if (contactCache != null){
+            return new Contacts(contactCache);
+        }
+        contactCache = new Contacts();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements){
             List<WebElement> cells = element.findElements(By.tagName("td"));
@@ -28,9 +33,9 @@ public class ContactHelper extends HelperBase {
                     .withId(id)
                     .withGivenName(givenName)
                     .withSurname(surname);
-            contacts.add(contact);
+            contactCache.add(contact);
         }
-        return contacts;
+        return new Contacts(contactCache);
     };
 
     public ContactHelper(WebDriver wd) {
@@ -123,6 +128,7 @@ public class ContactHelper extends HelperBase {
         new NavigationHelper(wd).createContactPage();
         fillContactForm(contact, true);
         submitContactCreation();
+        contactCache = null;
         returntoHomePage();
     }
 
@@ -130,6 +136,7 @@ public class ContactHelper extends HelperBase {
         selecteEditIconById(contact.getId());
         fillContactForm(contact, false);
         submitContactUpdate();
+        contactCache = null;
         returntoHomePage();
     }
 
@@ -137,6 +144,7 @@ public class ContactHelper extends HelperBase {
         selectedContactById(contact.getId());
         deleteSelectedContacts();
         submitContactDeletion();
+        contactCache = null;
         returntoHomePage();
     }
 

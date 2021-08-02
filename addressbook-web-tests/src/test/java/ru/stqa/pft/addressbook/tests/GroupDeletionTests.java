@@ -18,7 +18,7 @@ public class GroupDeletionTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions(){
         app.goTo().groupPage();
-        if ( app.group().groupList().size() == 0){
+        if ( app.group().all().size() == 0){
            // app.group().createGroup(new GroupData("test01", "test", "text"));
             app.group().create(new GroupData().withGroupName("removeGroup"));
         }
