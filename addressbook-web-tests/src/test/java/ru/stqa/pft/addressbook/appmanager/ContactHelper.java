@@ -28,11 +28,15 @@ public class ContactHelper extends HelperBase {
             }
             String givenName = cells.get(2).getText();
             String surname = cells.get(1).getText();
+            String[] phones = cells.get(5).getText().split("\n");
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             ContactData contact = new ContactData()
                     .withId(id)
                     .withGivenName(givenName)
-                    .withSurname(surname);
+                    .withSurname(surname)
+                    .withPhoneHome(phones[0])
+                    .withCell(phones[1])
+                    .withPhoneOffice(phones[2]);
             contactCache.add(contact);
         }
         return new Contacts(contactCache);
