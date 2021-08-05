@@ -41,7 +41,7 @@ public class ContactModificationTests extends TestBase {
                 .withCompany("company")
                 .withFirstAddress("NewTown")
                 .withPhoneHome("2222111")
-                .withCell("+70001234545")
+                .withCell("+71111234545")
                 .withPhoneOffice("1234321")
                 .withFax("+490987653214")
                 .withMainEmail("my.email@test.test")
