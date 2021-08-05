@@ -29,17 +29,18 @@ public class ContactHelper extends HelperBase {
             String givenName = cells.get(2).getText();
             String surname = cells.get(1).getText();
             String allPhones = cells.get(5).getText();
-            String[] phones = allPhones.split("\n");
+           // String[] phones = allPhones.split("\n");
 
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             ContactData contact = new ContactData()
                     .withId(id)
                     .withGivenName(givenName)
                     .withSurname(surname)
-                    .withPhoneHome(phones[0])
+                    .withAllPhones(allPhones);
+                   /* .withPhoneHome(phones[0])
                     .withCell(phones[1])
                     .withPhoneOffice(phones[2])
-                    .withPhoneAlternative(phones[3]);
+                    .withPhoneAlternative(phones[3]);*/
             contactCache.add(contact);
         }
         return new Contacts(contactCache);

@@ -28,6 +28,9 @@ public class ContactData {
     private String notes;
     private int id = Integer.MAX_VALUE;
 
+
+    private String allPhones;
+
     public ContactData withGivenName(String givenName) {
         this.givenName = givenName;
         return this;
@@ -155,6 +158,11 @@ public class ContactData {
 
     public ContactData withId(int id) {
         this.id = id;
+        return this;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
         return this;
     }
 
@@ -309,5 +317,7 @@ public class ContactData {
     public String getNotes() {
         return notes;
     }
+
+    public String getAllPhones() { return allPhones; }
 
 }
