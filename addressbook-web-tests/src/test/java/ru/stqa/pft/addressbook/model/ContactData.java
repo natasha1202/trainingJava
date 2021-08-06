@@ -28,8 +28,8 @@ public class ContactData {
     private String notes;
     private int id = Integer.MAX_VALUE;
 
-
     private String allPhones;
+    private String allEmails;
 
     public ContactData withGivenName(String givenName) {
         this.givenName = givenName;
@@ -165,6 +165,12 @@ public class ContactData {
         this.allPhones = allPhones;
         return this;
     }
+
+    public ContactData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
+        return this;
+    }
+
 
 
     @Override
@@ -319,5 +325,7 @@ public class ContactData {
     }
 
     public String getAllPhones() { return allPhones; }
+
+    public String getAllEmails() { return allEmails; }
 
 }
