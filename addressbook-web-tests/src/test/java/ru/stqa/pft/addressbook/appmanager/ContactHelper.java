@@ -74,6 +74,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("middlename"), contactData.getMiddleName());
         type(By.name("lastname"), contactData.getSurname());
         type(By.name("nickname"), contactData.getNickname());
+        attach(By.name("photo"), contactData.getPhoto());
         type(By.name("title"), contactData.getTitle());
         type(By.name("company"), contactData.getCompany());
         type(By.name("address"), contactData.getFirstAddress());
@@ -107,7 +108,17 @@ public class ContactHelper extends HelperBase {
         type(By.name("address2"), contactData.getSecondAddress());
         type(By.name("phone2"), contactData.getPhoneAlternative());
         type(By.name("notes"), contactData.getNotes());
+    }
 
+    public void fillContactFormPhoto(ContactData contactData, boolean creation) {
+        type(By.name("firstname"), contactData.getGivenName());
+        type(By.name("lastname"), contactData.getSurname());
+        attach(By.name("photo"), contactData.getPhoto());
+        if (creation){
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        } else {
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
     }
 
     public void selectedContact(int index) {
@@ -143,6 +154,14 @@ public class ContactHelper extends HelperBase {
     public void create(ContactData contact) {
         new NavigationHelper(wd).createContactPage();
         fillContactForm(contact, true);
+        submitContactCreation();
+        contactCache = null;
+        returntoHomePage();
+    }
+
+    public void createWithPhoto(ContactData contact) {
+        new NavigationHelper(wd).createContactPage();
+        fillContactFormPhoto(contact, true);
         submitContactCreation();
         contactCache = null;
         returntoHomePage();
