@@ -4,6 +4,7 @@ import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,14 +15,21 @@ import static org.hamcrest.MatcherAssert.*;
 public class GroupCreationTests extends TestBase {
 
     @DataProvider
-    public Iterator<Object[]> validGroups(){
+    public Iterator<Object[]> validGroups() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
        // list.add(new Object[]{"test1", "header1", "footer1"});
        // list.add(new Object[]{"test2", "header2", "footer2"});
        // list.add(new Object[]{"test3", "header3", "footer3"});
-        list.add(new Object[] {new GroupData().withGroupName("test1").withGroupFooter("header1").withGroupHeader("footer1")});
-        list.add(new Object[] {new GroupData().withGroupName("test2").withGroupFooter("header2").withGroupHeader("footer2")});
-        list.add(new Object[] {new GroupData().withGroupName("test3").withGroupFooter("header3").withGroupHeader("footer3")});
+       // list.add(new Object[] {new GroupData().withGroupName("test1").withGroupFooter("header1").withGroupHeader("footer1")});
+       // list.add(new Object[] {new GroupData().withGroupName("test2").withGroupFooter("header2").withGroupHeader("footer2")});
+       // list.add(new Object[] {new GroupData().withGroupName("test3").withGroupFooter("header3").withGroupHeader("footer3")});
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.csv")));
+        String line = reader.readLine();
+        while (line != null){
+            String[] split = line.split(";"); // меджу кавычками указывается разделитель, для csv-файла это ;
+            list.add(new Object[]{new  GroupData().withGroupName(split[0]).withGroupHeader(split[1]).withGroupFooter(split[2])});
+            line = reader.readLine();
+        }
         return list.iterator();
     }
 
