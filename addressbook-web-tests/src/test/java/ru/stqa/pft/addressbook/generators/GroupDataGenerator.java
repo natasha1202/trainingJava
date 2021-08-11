@@ -44,7 +44,7 @@ public class GroupDataGenerator {
 
     private void run() throws IOException {
         List<GroupData> groups = generateGroups(count);
-        if(format.equals("scv")){
+        if(format.equals("csv")){
             saveAsCsv(groups, new File(file));
         } else if (format.equals("xml")) {
             saveAsXml(groups, new File(file));

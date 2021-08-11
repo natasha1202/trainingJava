@@ -1,0 +1,110 @@
+<list>
+  <contact>
+    <givenName>name 0</givenName>
+    <middleName>middle 0</middleName>
+    <surname>surname 0</surname>
+    <nickname>nick 0</nickname>
+    <title>title 0</title>
+    <company>company 0</company>
+    <firstAddress>address 0</firstAddress>
+    <phoneHome>123450</phoneHome>
+    <cell>+7 (123) 123 45 60</cell>
+    <phoneOffice>8123450</phoneOffice>
+    <fax>1111-2220</fax>
+    <mainEmail>email00@test.test</mainEmail>
+    <email2>email20@test.test</email2>
+    <email3>email30@test.test</email3>
+    <homepageURL>http://1230</homepageURL>
+    <birthdayDay>11</birthdayDay>
+    <birthdayMonth>April</birthdayMonth>
+    <birthdayYear>2000</birthdayYear>
+    <anniversaryDay>5</anniversaryDay>
+    <anniversaryMonth>May</anniversaryMonth>
+    <anniversaryYear>2018</anniversaryYear>
+    <group>test 1</group>
+    <secondAddress>new address 0</secondAddress>
+    <phoneAlternative>20123450</phoneAlternative>
+    <notes>comment</notes>
+  </contact>
+  <contact>
+    <givenName>name 1</givenName>
+    <middleName>middle 1</middleName>
+    <surname>surname 1</surname>
+    <nickname>nick 1</nickname>
+    <title>title 1</title>
+    <company>company 1</company>
+    <firstAddress>address 1</firstAddress>
+    <phoneHome>123451</phoneHome>
+    <cell>+7 (123) 123 45 61</cell>
+    <phoneOffice>8123451</phoneOffice>
+    <fax>1111-2221</fax>
+    <mainEmail>email01@test.test</mainEmail>
+    <email2>email21@test.test</email2>
+    <email3>email31@test.test</email3>
+    <homepageURL>http://1231</homepageURL>
+    <birthdayDay>11</birthdayDay>
+    <birthdayMonth>April</birthdayMonth>
+    <birthdayYear>2000</birthdayYear>
+    <anniversaryDay>5</anniversaryDay>
+    <anniversaryMonth>May</anniversaryMonth>
+    <anniversaryYear>2018</anniversaryYear>
+    <group>test 1</group>
+    <secondAddress>new address 1</secondAddress>
+    <phoneAlternative>20123451</phoneAlternative>
+    <notes>comment</notes>
+  </contact>
+  <contact>
+    <givenName>name 2</givenName>
+    <middleName>middle 2</middleName>
+    <surname>surname 2</surname>
+    <nickname>nick 2</nickname>
+    <title>title 2</title>
+    <company>company 2</company>
+    <firstAddress>address 2</firstAddress>
+    <phoneHome>123452</phoneHome>
+    <cell>+7 (123) 123 45 62</cell>
+    <phoneOffice>8123452</phoneOffice>
+    <fax>1111-2222</fax>
+    <mainEmail>email02@test.test</mainEmail>
+    <email2>email22@test.test</email2>
+    <email3>email32@test.test</email3>
+    <homepageURL>http://1232</homepageURL>
+    <birthdayDay>11</birthdayDay>
+    <birthdayMonth>April</birthdayMonth>
+    <birthdayYear>2000</birthdayYear>
+    <anniversaryDay>5</anniversaryDay>
+    <anniversaryMonth>May</anniversaryMonth>
+    <anniversaryYear>2018</anniversaryYear>
+    <group>test 1</group>
+    <secondAddress>new address 2</secondAddress>
+    <phoneAlternative>20123452</phoneAlternative>
+    <notes>comment</notes>
+  </contact>
+  <contact>
+    <givenName>name 3</givenName>
+    <middleName>middle 3</middleName>
+    <surname>surname 3</surname>
+    <nickname>nick 3</nickname>
+    <title>title 3</title>
+    <company>company 3</company>
+    <firstAddress>address 3</firstAddress>
+    <phoneHome>123453</phoneHome>
+    <cell>+7 (123) 123 45 63</cell>
+    <phoneOffice>8123453</phoneOffice>
+    <fax>1111-2223</fax>
+    <mainEmail>email03@test.test</mainEmail>
+    <email2>email23@test.test</email2>
+    <email3>email33@test.test</email3>
+    <homepageURL>http://1233</homepageURL>
+    <birthdayDay>11</birthdayDay>
+    <birthdayMonth>April</birthdayMonth>
+    <birthdayYear>2000</birthdayYear>
+    <anniversaryDay>5</anniversaryDay>
+    <anniversaryMonth>May</anniversaryMonth>
+    <anniversaryYear>2018</anniversaryYear>
+    <group>test 1</group>
+    <secondAddress>new address 3</secondAddress>
+    <phoneAlternative>20123453</phoneAlternative>
+    <notes>comment</notes>
+  </contact>
+</list>
