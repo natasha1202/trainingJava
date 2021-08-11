@@ -16,7 +16,7 @@ public class ContactCreationWithPhotoTests extends TestBase{
         app.goTo().homePage();
         Contacts before = (Contacts) app.contact().all();
         app.goTo().createContactPage();
-        File photo = new File("src/test/resources/mokona.png");
+        File photo = new File("src/test/resources/test.png");
         ContactData contact = new ContactData()
                 .withGivenName("userWithPhoto")
                 .withSurname("userWithPhoto")
@@ -32,7 +32,7 @@ public class ContactCreationWithPhotoTests extends TestBase{
     public void testCurrentDir(){
         File currentDir = new File(".");
         System.out.println(currentDir.getAbsolutePath()); // C:\Users\nuvarova\Desktop\TrainingJava\trainingJava\addressbook-web-tests\.
-        File photo = new File("src/test/resources/mokona.png");
+        File photo = new File("src/test/resources/test.png");
         System.out.println(photo.getAbsolutePath());
         System.out.println(photo.exists());
     }
