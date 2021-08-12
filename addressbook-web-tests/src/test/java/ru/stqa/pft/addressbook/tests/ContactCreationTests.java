@@ -25,7 +25,7 @@ public class ContactCreationTests extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validContactsFromXml() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")));
+        try(BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")))){
         String xml = "";
         String line = reader.readLine();
         while (line != null){
@@ -35,12 +35,12 @@ public class ContactCreationTests extends TestBase {
         XStream xstream = new XStream();
         xstream.processAnnotations(ContactData.class);
         List<ContactData> contacts = (List<ContactData>) xstream.fromXML(xml);
-        return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
+        return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();}
     }
 
     @DataProvider
     public Iterator<Object[]> validContactsFromJson() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")));
+        try(BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")))){
         String json = "";
         String line = reader.readLine();
         while (line != null){
@@ -49,13 +49,13 @@ public class ContactCreationTests extends TestBase {
         }
         Gson gson = new Gson();
         List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType());
-        return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
+        return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();}
     }
 
     @DataProvider
     public Iterator<Object[]> validContactsFromScv() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.csv")));
+        try(BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.csv")))){
         String line = reader.readLine();
         while (line != null){
             String[] split = line.split(";"); // меджу кавычками указывается разделитель, для csv-файла это ;
@@ -86,7 +86,7 @@ public class ContactCreationTests extends TestBase {
                     .withNotes(split[24])});
             line = reader.readLine();
         }
-        return list.iterator();
+        return list.iterator();}
     }
 
     @Test (dataProvider = "validContactsFromJson")
