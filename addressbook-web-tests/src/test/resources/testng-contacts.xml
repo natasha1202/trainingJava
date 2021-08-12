@@ -1,0 +1,49 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "SuiteContacts">
+
+   <test name = "ContactTest1">
+      <classes>
+         <class name = "ContactCreationTests" />
+      </classes>
+   </test>
+  
+   <test name = "ContactTest2">
+      <classes>
+         <class name = "testContactModification" />
+      </classes>
+   </test>
+   
+   <test name = "ContactTest3">
+      <classes>
+         <class name = "ContactDeletionTests" />
+      </classes>
+   </test>
+   
+   
+   <test name = "ContactTest4">
+      <classes>
+         <class name = "ContactAddressTests" />
+      </classes>
+   </test>
+   
+   <test name = "ContactTest5">
+      <classes>
+         <class name = "ContactEmailTests" />
+      </classes>
+   </test>
+   
+   <test name = "ContactTest6">
+      <classes>
+         <class name = "ContactPhoneTests" />
+      </classes>
+   </test>
+   
+   <test name = "ContactTest7">
+      <classes>
+         <class name = "ContactCreationWithPhotoTests" />
+      </classes>
+   </test>
+  
+</suite>  
