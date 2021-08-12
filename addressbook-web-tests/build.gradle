@@ -16,7 +16,7 @@ test {
     useTestNG()
 }
 
-task testContacts (type: Type){
+task testContacts (type: Test){
     useTestNG{
         suites 'src/test/resources/testng-contacts.xml'
     }
@@ -28,7 +28,7 @@ task testContacts (type: Type){
     }
 }
 
-task testGroups (type: Type){
+task testGroups (type: Test){
     useTestNG{
         suites 'src/test/resources/testng-groups.xml'
     }
