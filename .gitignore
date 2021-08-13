@@ -59,3 +59,4 @@ sandbox/out/test/classes/ru/stqa/pft/sandbox/EquationTests.class
 sandbox/out/production/classes/ru/stqa/pft/sandbox/Equation.class
 addressbook-web-tests/src/test/resources/groups.csv
 addressbook-web-tests/src/test/resources/contacts.xml
+*.log
