@@ -303,24 +303,6 @@ public class ContactData {
         return id;
     }
 
-   /* @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ContactData that = (ContactData) o;
-
-        if (givenName != null ? !givenName.equals(that.givenName) : that.givenName != null) return false;
-        return surname != null ? surname.equals(that.surname) : that.surname == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = givenName != null ? givenName.hashCode() : 0;
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        return result;
-    } */
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -330,13 +312,52 @@ public class ContactData {
 
         if (id != that.id) return false;
         if (givenName != null ? !givenName.equals(that.givenName) : that.givenName != null) return false;
-        return surname != null ? surname.equals(that.surname) : that.surname == null;
+        if (middleName != null ? !middleName.equals(that.middleName) : that.middleName != null) return false;
+        if (surname != null ? !surname.equals(that.surname) : that.surname != null) return false;
+        if (nickname != null ? !nickname.equals(that.nickname) : that.nickname != null) return false;
+        if (title != null ? !title.equals(that.title) : that.title != null) return false;
+        if (company != null ? !company.equals(that.company) : that.company != null) return false;
+        if (firstAddress != null ? !firstAddress.equals(that.firstAddress) : that.firstAddress != null) return false;
+        if (phoneHome != null ? !phoneHome.equals(that.phoneHome) : that.phoneHome != null) return false;
+        if (cell != null ? !cell.equals(that.cell) : that.cell != null) return false;
+        if (phoneOffice != null ? !phoneOffice.equals(that.phoneOffice) : that.phoneOffice != null) return false;
+        if (fax != null ? !fax.equals(that.fax) : that.fax != null) return false;
+        if (mainEmail != null ? !mainEmail.equals(that.mainEmail) : that.mainEmail != null) return false;
+        if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
+        if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
+        if (homepageURL != null ? !homepageURL.equals(that.homepageURL) : that.homepageURL != null) return false;
+        if (birthdayYear != null ? !birthdayYear.equals(that.birthdayYear) : that.birthdayYear != null) return false;
+        if (anniversaryYear != null ? !anniversaryYear.equals(that.anniversaryYear) : that.anniversaryYear != null)
+            return false;
+        if (secondAddress != null ? !secondAddress.equals(that.secondAddress) : that.secondAddress != null)
+            return false;
+        if (phoneAlternative != null ? !phoneAlternative.equals(that.phoneAlternative) : that.phoneAlternative != null)
+            return false;
+        return notes != null ? notes.equals(that.notes) : that.notes == null;
     }
 
     @Override
     public int hashCode() {
         int result = givenName != null ? givenName.hashCode() : 0;
+        result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (nickname != null ? nickname.hashCode() : 0);
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (company != null ? company.hashCode() : 0);
+        result = 31 * result + (firstAddress != null ? firstAddress.hashCode() : 0);
+        result = 31 * result + (phoneHome != null ? phoneHome.hashCode() : 0);
+        result = 31 * result + (cell != null ? cell.hashCode() : 0);
+        result = 31 * result + (phoneOffice != null ? phoneOffice.hashCode() : 0);
+        result = 31 * result + (fax != null ? fax.hashCode() : 0);
+        result = 31 * result + (mainEmail != null ? mainEmail.hashCode() : 0);
+        result = 31 * result + (email2 != null ? email2.hashCode() : 0);
+        result = 31 * result + (email3 != null ? email3.hashCode() : 0);
+        result = 31 * result + (homepageURL != null ? homepageURL.hashCode() : 0);
+        result = 31 * result + (birthdayYear != null ? birthdayYear.hashCode() : 0);
+        result = 31 * result + (anniversaryYear != null ? anniversaryYear.hashCode() : 0);
+        result = 31 * result + (secondAddress != null ? secondAddress.hashCode() : 0);
+        result = 31 * result + (phoneAlternative != null ? phoneAlternative.hashCode() : 0);
+        result = 31 * result + (notes != null ? notes.hashCode() : 0);
         result = 31 * result + id;
         return result;
     }
