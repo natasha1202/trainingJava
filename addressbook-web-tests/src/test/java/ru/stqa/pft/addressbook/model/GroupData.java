@@ -18,6 +18,30 @@ public class GroupData {
     @Expose
     @Column(name = "group_name")
     private String groupName;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        GroupData groupData = (GroupData) o;
+
+        if (id != groupData.id) return false;
+        if (groupName != null ? !groupName.equals(groupData.groupName) : groupData.groupName != null) return false;
+        if (groupHeader != null ? !groupHeader.equals(groupData.groupHeader) : groupData.groupHeader != null)
+            return false;
+        return groupFooter != null ? groupFooter.equals(groupData.groupFooter) : groupData.groupFooter == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = groupName != null ? groupName.hashCode() : 0;
+        result = 31 * result + (groupHeader != null ? groupHeader.hashCode() : 0);
+        result = 31 * result + (groupFooter != null ? groupFooter.hashCode() : 0);
+        result = 31 * result + id;
+        return result;
+    }
+
     @Expose
     @Column(name = "group_header")
     @Type(type = "text")
@@ -49,23 +73,7 @@ public class GroupData {
         return groupName != null ? groupName.equals(groupData.groupName) : groupData.groupName == null;
     } */
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        GroupData groupData = (GroupData) o;
-
-        if (id != groupData.id) return false;
-        return groupName != null ? groupName.equals(groupData.groupName) : groupData.groupName == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return groupName != null ? groupName.hashCode() : 0;
-    }
-
-   /* public GroupData(String groupName, String groupHeader, String groupFooter) {
+    /* public GroupData(String groupName, String groupHeader, String groupFooter) {
         this.id = Integer.MAX_VALUE;
         this.groupName = groupName;
         this.groupHeader = groupHeader;

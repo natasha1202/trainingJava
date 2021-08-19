@@ -82,8 +82,8 @@ public class ContactData {
     private String homepageURL;
 
     @Transient
-   // @Column(name="bday")
-   // @Type(type="tinyint")
+ //   @Column(name="bday")
+ //   @Type(type="tinyint")
     @Expose
     private String birthdayDay;
 
@@ -97,7 +97,7 @@ public class ContactData {
 
     @Transient
   //  @Column(name="aday")
-  //  @Type(type="tinyint")
+ //   @Type(type="int")
     @Expose
     private String anniversaryDay;
 
