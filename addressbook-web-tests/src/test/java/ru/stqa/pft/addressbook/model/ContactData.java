@@ -3,67 +3,146 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 
+@Entity
+@Table(name = "addressbook")
 @XStreamAlias("contact")
 public class ContactData {
+    @Column(name="firstname")
     @Expose
     private String givenName;
+
+    @Column(name="middlename")
     @Expose
     private String middleName;
+
+    @Column(name="lastname")
     @Expose
     private String surname;
+
+    @Column(name="nickname")
     @Expose
     private String nickname;
+
+    @Column(name="title")
     @Expose
     private String title;
+
+    @Column(name="company")
     @Expose
     private String company;
+
+    @Column(name="address")
+    @Type(type="text")
     @Expose
     private String firstAddress;
+
+    @Column(name="home")
+    @Type(type="text")
     @Expose
     private String phoneHome;
+
+    @Column(name="mobile")
+    @Type(type="text")
     @Expose
     private String cell;
+
+    @Column(name="work")
+    @Type(type="text")
     @Expose
     private String phoneOffice;
+
+    @Column(name="fax")
+    @Type(type="text")
     @Expose
     private String fax;
+
+    @Column(name="email")
+    @Type(type="text")
     @Expose
     private String mainEmail;
+
+    @Column(name="email2")
+    @Type(type="text")
     @Expose
     private String email2;
+
+    @Column(name="email3")
+    @Type(type="text")
     @Expose
     private String email3;
+
+    @Column(name="homepage")
+    @Type(type="text")
     @Expose
     private String homepageURL;
+
+    @Transient
+   // @Column(name="bday")
+   // @Type(type="tinyint")
     @Expose
     private String birthdayDay;
+
+    @Column(name="bmonth")
     @Expose
     private String birthdayMonth;
+
+    @Column(name="byear")
     @Expose
     private String birthdayYear;
+
+    @Transient
+  //  @Column(name="aday")
+  //  @Type(type="tinyint")
     @Expose
     private String anniversaryDay;
+
+    @Column(name="amonth")
     @Expose
     private String anniversaryMonth;
+
+    @Column(name="ayear")
     @Expose
     private String anniversaryYear;
+
+    @Transient
     @Expose
     private String group;
+    //transient private String group;
+
+    @Column(name="address2")
+    @Type(type="text")
     @Expose
     private String secondAddress;
+
+    @Column(name="phone2")
+    @Type(type="text")
     @Expose
     private String phoneAlternative;
+
+    @Column(name="notes")
+    @Type(type="text")
     @Expose
     private String notes;
+
+    @Id
+    @Column(name="id")
     @XStreamOmitField
     private int id = Integer.MAX_VALUE;
 
+    @Transient
     private String allPhones;
+    @Transient
     private String allEmails;
-    private File photo;
+
+   // @Type(type="mediumtext")
+    @Type(type="text")
+    @Column(name="photo")
+    private String photo;
 
     public ContactData withGivenName(String givenName) {
         this.givenName = givenName;
@@ -206,7 +285,7 @@ public class ContactData {
     }
 
     public ContactData withPhoto(File photo) {
-        this.photo = photo;
+        this.photo = photo.getPath();
         return this;
     }
 
@@ -366,6 +445,6 @@ public class ContactData {
 
     public String getAllEmails() { return allEmails; }
 
-    public File getPhoto() { return photo; }
+    public File getPhoto() { return new File(photo); }
 
 }
