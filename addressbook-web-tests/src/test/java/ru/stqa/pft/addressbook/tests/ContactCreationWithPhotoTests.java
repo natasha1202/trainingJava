@@ -20,8 +20,7 @@ public class ContactCreationWithPhotoTests extends TestBase{
         ContactData contact = new ContactData()
                 .withGivenName("userWithPhoto")
                 .withSurname("userWithPhoto")
-                .withPhoto(photo)
-                .withGroup("test01");
+                .withPhoto(photo);
 
         app.contact().createWithPhoto(contact);
         Contacts after = (Contacts) app.contact().all();

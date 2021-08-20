@@ -7,6 +7,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "addressbook")
@@ -109,11 +111,6 @@ public class ContactData {
     @Expose
     private String anniversaryYear;
 
-    @Transient
-    @Expose
-    private String group;
-    //transient private String group;
-
     @Column(name="address2")
     @Type(type="text")
     @Expose
@@ -143,6 +140,12 @@ public class ContactData {
     @Type(type="text")
     @Column(name="photo")
     private String photo;
+
+    @Expose
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="address_in_groups",
+            joinColumns = @JoinColumn (name = "id"),  inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<GroupData> groups = new HashSet<GroupData>();
 
     public ContactData withGivenName(String givenName) {
         this.givenName = givenName;
@@ -246,11 +249,6 @@ public class ContactData {
 
     public ContactData withAnniversaryYear(String anniversaryYear) {
         this.anniversaryYear = anniversaryYear;
-        return this;
-    }
-
-    public ContactData withGroup(String group) {
-        this.group = group;
         return this;
     }
 
@@ -446,9 +444,7 @@ public class ContactData {
         return anniversaryYear;
     }
 
-    public String getGroup() {
-        return group;
-    }
+    public Groups getGroups() {  return new Groups(groups); }
 
     public String getSecondAddress() {
         return secondAddress;
@@ -468,4 +464,8 @@ public class ContactData {
 
     public File getPhoto() { return new File(photo); }
 
+    public ContactData inGroups(GroupData group) {
+        groups.add(group);
+        return this;
+    }
 }

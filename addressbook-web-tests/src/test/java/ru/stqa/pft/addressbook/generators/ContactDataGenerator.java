@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -14,6 +15,8 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+
+import static ru.stqa.pft.addressbook.tests.TestBase.app;
 
 public class ContactDataGenerator {
 
@@ -70,6 +73,7 @@ public class ContactDataGenerator {
     }
 
     private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
+        Groups groups = app.db().groups();
         System.out.println(new File(".").getAbsolutePath());
         Writer writer = new FileWriter(file);
         for (ContactData contact : contacts){
@@ -95,15 +99,20 @@ public class ContactDataGenerator {
                     contact.getAnniversaryDay(),
                     contact.getAnniversaryMonth(),
                     contact.getAnniversaryYear(),
-                    contact.getGroup(),
+              //      contact.getGroup(),
+                    contact.inGroups(groups.iterator().next()),
                     contact.getSecondAddress(),
                     contact.getPhoneAlternative(),
-                    contact.getNotes()));
+                    contact.getNotes(),
+                    contact.inGroups(groups.iterator().next())
+            ));
+
         }
         writer.close();
     }
 
     private List<ContactData> generateContacts(int count) {
+        Groups groups = app.db().groups();
         List<ContactData> contacts = new ArrayList<ContactData>();
         for(int i = 0; i < count; i++){
             contacts.add(new ContactData().withGivenName(String.format("name %s", i))
@@ -127,10 +136,12 @@ public class ContactDataGenerator {
                     .withAnniversaryDay("5")
                     .withAnniversaryMonth("May")
                     .withAnniversaryYear("2018")
-                    .withGroup("test 1")
+              //      .withGroup("test 1")
+                    .inGroups(groups.iterator().next())
                     .withSecondAddress(String.format("new address %s", i))
                     .withPhoneAlternative("2012345"+ i)
                     .withNotes("comment")
+
             );
         }
         return  contacts;

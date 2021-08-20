@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -57,6 +58,7 @@ public class ContactCreationTests extends TestBase {
         List<Object[]> list = new ArrayList<Object[]>();
         try(BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.csv")))){
         String line = reader.readLine();
+        Groups groups = app.db().groups();
         while (line != null){
             String[] split = line.split(";"); // меджу кавычками указывается разделитель, для csv-файла это ;
             list.add(new Object[]{new  ContactData().withGivenName(split[0])
@@ -80,7 +82,8 @@ public class ContactCreationTests extends TestBase {
                     .withAnniversaryDay(split[18])
                     .withAnniversaryMonth(split[19])
                     .withAnniversaryYear(split[20])
-                    .withGroup(split[21])
+                  //  .withGroup(split[21])
+                    .inGroups(groups.iterator().next())
                     .withSecondAddress(split[22])
                     .withPhoneAlternative(split[23])
                     .withNotes(split[24])});
@@ -101,6 +104,7 @@ public class ContactCreationTests extends TestBase {
 
     @Test
     public void addBadContact(){
+        Groups groups = app.db().groups();
         Contacts before = app.db().contacts();
         ContactData contact = new ContactData()
                 .withGivenName("firstName'")
@@ -124,10 +128,11 @@ public class ContactCreationTests extends TestBase {
                 .withAnniversaryDay("21")
                 .withAnniversaryMonth("December")
                 .withAnniversaryYear("abc")
-                .withGroup("test01")
+              //  .withGroup("test01")
                 .withSecondAddress("new address")
                 .withPhoneAlternative("321123123")
-                .withNotes("comment");
+                .withNotes("comment")
+                .inGroups(groups.iterator().next());
         app.goTo().createContactPage();
         app.contact().create(contact);
         assertThat(app.contact().contactCount(), equalTo(before.size()));
