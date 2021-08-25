@@ -9,12 +9,20 @@ import ru.stqa.pft.addressbook.model.Groups;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class ContactDeassignGroup extends  TestBase{
 
     @BeforeMethod
     public void ensurePreconditions(){
+        Groups groups = app.db().groups();
+        if (groups.size() == 0){
+            app.goTo().groupPage();
+            GroupData group = new GroupData();
+            app.group().create(group.withGroupName("new_test"));
+        }
         if ( app.db().contacts().size() == 0){
-            Groups groups = app.db().groups();
             app.goTo().homePage();
             app.contact().create(new ContactData()
                     .withGivenName("name1")
@@ -29,12 +37,13 @@ public class ContactDeassignGroup extends  TestBase{
         app.goTo().homePage();
         List <GroupData> groupList = app.db().groups().stream().collect(Collectors.toList());
         GroupData assignedGroup = findGroupWithContact(groupList);
-        app.contact().selectGroupFromDropdown(assignedGroup.getId(), assignedGroup);
+        List <ContactData> assignedContactsBefore = assignedGroup.getContacts().stream().collect(Collectors.toList());
+        app.contact().filterByGroup(assignedGroup.getId(), assignedGroup);
         ContactData deassignedContact = (ContactData) app.contact().all();
         app.contact().selectedContactById(deassignedContact.getId());
         app.contact().removeFromGroup();
-        app.goTo().homePage();
-
+        List <ContactData> assignedContactsAfter = assignedGroup.getContacts().stream().collect(Collectors.toList());
+        assertThat(assignedContactsAfter, equalTo(assignedContactsBefore.remove(deassignedContact)));
 
     }
 
@@ -45,8 +54,6 @@ public class ContactDeassignGroup extends  TestBase{
             contactsCount = group.getContacts().size();
             if (contactsCount > 0){
                 groupWithContact = group;
-             //   groupWithContact = groupList.get(group.getId());
-            //    groupWithContact.iterator().next();
                 break;
             }
         }

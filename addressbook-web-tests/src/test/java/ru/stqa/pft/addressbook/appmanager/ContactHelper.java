@@ -162,10 +162,16 @@ public class ContactHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public void selectGroupFromDropdown(int id, GroupData groupData){
-        new Select(wd.findElement(By.cssSelector("select[name='group']>option[value='" + id + "']"))).
+    public void filterByGroup(int id, GroupData groupData){
+        new Select(wd.findElement(By.cssSelector(String.format("select[name='group']>option[value='%s']", id)))).
             //    selectByVisibleText(contactData.getGroups().iterator().next().getGroupName());
                     selectByVisibleText(groupData.getGroupName());
+    }
+
+    public void chooseGroup(int id, GroupData groupData){
+        new Select(wd.findElement(By.cssSelector(String.format("select[name='to_group']>option[value='%s']", id)))).
+                        //String.format("a[href='edit.php?id=%s']",id)
+                        selectByVisibleText(groupData.getGroupName());
     }
 
     public void removeFromGroup() {
