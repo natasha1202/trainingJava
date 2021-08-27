@@ -169,7 +169,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void chooseGroup(int id, GroupData groupData){
-        new Select(wd.findElement(By.cssSelector(String.format("select[name='to_group']>option[value='%s']", id)))).
+        new Select(wd.findElement(By.cssSelector(String.format("select[name='to_group']>select option[value='%s']", id)))).
                         //String.format("a[href='edit.php?id=%s']",id)
                         selectByVisibleText(groupData.getGroupName());
     }
@@ -177,6 +177,8 @@ public class ContactHelper extends HelperBase {
     public void removeFromGroup() {
         click(By.name("remove"));
     }
+
+    public void addToGroup(){click(By.name("add")); }
 
     public void create(ContactData contact) {
         new NavigationHelper(wd).createContactPage();

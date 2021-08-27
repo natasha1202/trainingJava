@@ -6,6 +6,12 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class ContactAssignGroup extends TestBase{
 
     @BeforeMethod
@@ -27,13 +33,17 @@ public class ContactAssignGroup extends TestBase{
 
     @Test
     public void assignGroupToContact(){
-        GroupData group = app.db().groups().iterator().next();
-        ContactData contact = app.db().contacts().iterator().next();
+
+        List<GroupData> groupList = app.db().groups().stream().collect(Collectors.toList());
+        ContactData assigningContact = app.db().contacts().iterator().next();
+     //   Groups groupsOfContact = assigningContact.getGroups();
+        GroupData assigningGroup = app.db().groups().iterator().next();
+        List <ContactData> assignedContactsBefore = assigningGroup.getContacts().stream().collect(Collectors.toList());
         app.goTo().homePage();
-
-
-
-
-
+        app.contact().selectedContactById(assigningContact.getId());
+        app.contact().chooseGroup(assigningGroup.getId(), assigningGroup);
+        app.contact().addToGroup();
+        List <ContactData> assignedContactsAfter = assigningGroup.getContacts().stream().collect(Collectors.toList());
+        assertThat(assignedContactsAfter, equalTo(assignedContactsBefore.add(assigningContact)));
     }
 }
