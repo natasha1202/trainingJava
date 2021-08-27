@@ -39,7 +39,7 @@ public class ContactDeassignGroup extends  TestBase{
         GroupData assignedGroup = findGroupWithContact(groupList);
         List <ContactData> assignedContactsBefore = assignedGroup.getContacts().stream().collect(Collectors.toList());
         app.contact().filterByGroup(assignedGroup.getId(), assignedGroup);
-        ContactData deassignedContact = (ContactData) app.contact().all();
+        ContactData deassignedContact = (ContactData) app.contact().all().iterator().next();
         app.contact().selectedContactById(deassignedContact.getId());
         app.contact().removeFromGroup();
         List <ContactData> assignedContactsAfter = assignedGroup.getContacts().stream().collect(Collectors.toList());
