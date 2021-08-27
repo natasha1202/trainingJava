@@ -41,7 +41,7 @@ public class ContactAssignGroup extends TestBase{
         List <ContactData> assignedContactsBefore = assigningGroup.getContacts().stream().collect(Collectors.toList());
         app.goTo().homePage();
         app.contact().selectedContactById(assigningContact.getId());
-        app.contact().chooseGroup(assigningGroup.getId(), assigningGroup);
+        app.contact().chooseGroup(assigningGroup.getId());
         app.contact().addToGroup();
         List <ContactData> assignedContactsAfter = assigningGroup.getContacts().stream().collect(Collectors.toList());
         assertThat(assignedContactsAfter, equalTo(assignedContactsBefore.add(assigningContact)));
