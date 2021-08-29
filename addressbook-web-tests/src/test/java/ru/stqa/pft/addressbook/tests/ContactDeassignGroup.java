@@ -44,6 +44,7 @@ public class ContactDeassignGroup extends  TestBase{
         app.contact().removeFromGroup();
         List <ContactData> assignedContactsAfter = assignedGroup.getContacts().stream().collect(Collectors.toList());
         assertThat(assignedContactsAfter, equalTo(assignedContactsBefore.remove(deassignedContact)));
+        //assertThat(assignedContactsAfter, equalToObject(assignedContactsBefore.remove(assigningContact)));
 
     }
 
