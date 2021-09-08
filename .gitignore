@@ -60,3 +60,5 @@ sandbox/out/production/classes/ru/stqa/pft/sandbox/Equation.class
 addressbook-web-tests/src/test/resources/groups.csv
 addressbook-web-tests/src/test/resources/contacts.xml
 *.log
+mantis-tests/out/test/classes/ru/stqa/pft/mantis/tests/LoginTests.class
+mantis-tests/out/test/classes/ru/stqa/pft/mantis/appmanager/HttpSession.class

@@ -24,7 +24,7 @@ public class HttpSession {
         httpclient = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
     }
 
-    /*public boolean login(String username, String password) throws IOException {
+    public boolean login(String username, String password) throws IOException {
         HttpPost post = new HttpPost (app.getProperty("web.baseUrl")+"/login.php");
        // HttpPost postLogin = new HttpPost (app.getProperty("web.baseUrl")+"/login_page.php");
        // HttpPost postPwd = new HttpPost (app.getProperty("web.baseUrl")+"/login_password_page.php");
@@ -36,12 +36,12 @@ public class HttpSession {
         post.setEntity(new UrlEncodedFormEntity(params));
         CloseableHttpResponse response = httpclient.execute(post);
         String body = getTextFrom(response);
-        //return body.contains(String.format("<span class=\"italic\">%s</span>", username));
+        return body.contains(String.format("<span class=\"italic\">%s</span>", username));
         //return body.contains(String.format("<span class=\"label hidden-xs label-default arrowed\">%s</span>", username));
-        return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
-    }*/
+        //return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
+    }
 
-    public boolean login(String username) throws IOException {
+   /* public boolean login(String username) throws IOException {
         HttpPost post = new HttpPost (app.getProperty("web.baseUrl")+"/login_page.php");
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("username", username));
@@ -50,7 +50,8 @@ public class HttpSession {
         post.setEntity(new UrlEncodedFormEntity(params));
         CloseableHttpResponse response = httpclient.execute(post);
         String body = getTextFrom(response);
-        return body.contains(String.format("<input hidden=\"\" readonly=\"\" type=\"text\" name=\"username\" class=\"hidden\" tabindex=\"-1\" value=%s id=\"hidden_username\">", username));
+       // return body.contains(String.format("<input hidden readonly type=\"text\" name=\"username\" class=\"hidden\" tabindex=\"-1\" value=%s id=\"hidden_username\">", username));
+        return body.contains(String.format("<input id=\"username\" name=\"username\" type=\"text\" placeholder=\"Username\""));
     }
     public boolean password(String password) throws IOException {
         HttpPost post = new HttpPost (app.getProperty("web.baseUrl")+"/login_password_page.php");
@@ -62,8 +63,9 @@ public class HttpSession {
         CloseableHttpResponse response = httpclient.execute(post);
         String body = getTextFrom(response);
         String username = app.getProperty("web.adminLogin");
-        return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
-    }
+        //return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
+        return body.contains(String.format("You should disable the default '%s' account or change its password", username));
+    } */
 
     private String getTextFrom(CloseableHttpResponse response) throws IOException{
         try {
@@ -77,8 +79,8 @@ public class HttpSession {
         HttpGet get = new HttpGet(app.getProperty("web.baseUrl")+"/login.php");
         CloseableHttpResponse response = httpclient.execute(get);
         String body = getTextFrom(response);
-        //return body.contains(String.format("<span class=\"italic\">%s</span>)", username));
-        return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
+        return body.contains(String.format("<span class=\"italic\">%s</span>)", username));
+        //return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
 
     }
 

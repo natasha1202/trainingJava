@@ -1,13 +1,6 @@
 package ru.stqa.pft.mantis.appmanager;
 
 import org.subethamail.wiser.Wiser;
-import org.subethamail.wiser.WiserMessage;
-
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class MailHelper {
 
@@ -19,7 +12,7 @@ public class MailHelper {
         wiser = new Wiser();
     }
 
-    public List<MailMessage> waitFromMail(int count, long timeout) throws MessagingException, IOException {
+   /* public List<MailMessage> waitFromMail(int count, long timeout) throws MessagingException, IOException {
         long start = System.currentTimeMillis();
         while (System.currentTimeMillis() < start + timeout){
             if(wiser.getMessages().size() >= count){
@@ -32,6 +25,6 @@ public class MailHelper {
             e.printStackTrace();
         }
         throw new Error("No mail");
-    }
+    }*/
 
 }
