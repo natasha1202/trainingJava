@@ -5,12 +5,12 @@ repositories {
 }
 dependencies{
     implementation 'org.testng:testng:7.4.0'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.0.0-beta-3'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.0.0-rc-1'
     implementation 'org.hamcrest:java-hamcrest:2.0.0.0'
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
     implementation 'commons-net:commons-net:3.8.0'
     implementation 'org.subethamail:subethasmtp:3.1.7'
-    implementation 'javax.mail:javax.mail-api:1.6.2'
+    implementation 'ru.lanwen.verbalregex:java-verbal-expressions:1.8'
 }
 test {
     useTestNG()
