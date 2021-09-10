@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
 import java.util.Set;
@@ -88,12 +87,12 @@ public class ContactHelper extends HelperBase {
         type(By.name("email3"), contactData.getEmail3());
         type(By.name("homepage"), contactData.getHomepageURL());
 
-        new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBirthdayDay());
-        new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(contactData.getBirthdayMonth());
+        if (contactData.getBirthdayDay() != null) {new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBirthdayDay());}
+        if (contactData.getBirthdayDay() != null) {new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(contactData.getBirthdayMonth());}
         type(By.name("byear"), contactData.getBirthdayYear());
 
-        new Select(wd.findElement(By.name("aday"))).selectByVisibleText(contactData.getAnniversaryDay());
-        new Select(wd.findElement(By.name("amonth"))).selectByVisibleText(contactData.getAnniversaryMonth());
+        if (contactData.getBirthdayDay() != null) {new Select(wd.findElement(By.name("aday"))).selectByVisibleText(contactData.getAnniversaryDay());}
+        if (contactData.getBirthdayDay() != null) {new Select(wd.findElement(By.name("amonth"))).selectByVisibleText(contactData.getAnniversaryMonth());}
         type(By.name("ayear"), contactData.getAnniversaryYear());
 
         if (creation){
@@ -166,7 +165,7 @@ public class ContactHelper extends HelperBase {
         /*new Select(wd.findElement(By.cssSelector(String.format("select[name='group']>option[value='%s']", id)))).
             //    selectByVisibleText(contactData.getGroups().iterator().next().getGroupName());
                     selectByVisibleText(groupData.getGroupName()); */
-        new Select(wd.findElement(By.name("group"))).selectByValue("" +id);
+        new Select(wd.findElement(By.name("group"))).selectByValue("" + id);
     }
 
     public void chooseGroup(int id){
