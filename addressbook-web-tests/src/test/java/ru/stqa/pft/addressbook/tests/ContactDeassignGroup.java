@@ -47,21 +47,14 @@ public class ContactDeassignGroup extends  TestBase{
             TimeUnit.SECONDS.sleep(5);
             app.goTo().homePage();
         }
-        //TimeUnit.SECONDS.sleep(2);
-        //List<Contacts> contactsOfGroup = Collections.singletonList(assignedGroup.getContacts());
+        TimeUnit.SECONDS.sleep(2);
         app.contact().filterByGroup(deassignedGroup.getId());
         ContactData deassigningContact = app.db().contacts(deassignedGroup.getContacts().iterator().next().getId());
         Groups groupsBefore = deassigningContact.getGroups();
         app.contact().selectedContactById(deassigningContact.getId());
-        //TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(2);
         app.contact().removeFromGroup();
         Groups groupsAfter = app.db().contacts(deassigningContact.getId()).getGroups();
-       // assignedContactsBefore = app.db().groups(assignedGroup.getId()).getContacts();
-        //List <ContactData> assignedContactsBefore = assignedGroup.getContacts().stream().collect(Collectors.toList());
-        //assignedContactsAfter = app.db().groups(assignedGroup.getId()).getContacts();
-        //List <ContactData> assignedContactsAfter = assignedGroup.getContacts().stream().collect(Collectors.toList());
-        //assertThat(assignedContactsAfter.size(), equalTo(assignedContactsBefore.size() - 1));
-        //assertThat(assignedContactsAfter, equalTo(assignedContactsBefore.without(deassignedContact)));
         assertThat(groupsAfter, equalTo(groupsBefore.without(deassignedGroup)));
 
     }
