@@ -1,5 +1,5 @@
 <?php
-$g_hostname = 'localhost';
+$g_hostname = 'localhost:8090';
 $g_db_type = 'mysql';
 $g_database_name = 'bugtracker';
 $g_db_username = 'root';
