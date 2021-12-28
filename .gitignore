@@ -63,3 +63,4 @@ addressbook-web-tests/src/test/resources/contacts.xml
 mantis-tests/out/test/classes/ru/stqa/pft/mantis/tests/LoginTests.class
 mantis-tests/out/test/classes/ru/stqa/pft/mantis/appmanager/HttpSession.class
 addressbook-web-tests/src/test/resources/groups.json
+.idea/runConfigurations.xml
